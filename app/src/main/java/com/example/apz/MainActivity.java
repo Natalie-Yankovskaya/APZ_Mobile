@@ -1,15 +1,24 @@
 package com.example.apz;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.apz.Adapters.WashersAdapter;
+import com.example.apz.Fragments.ProfileFragment;
+import com.example.apz.Fragments.WashingsFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.apz.Fragments.LaundriesFragment;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,85 +35,41 @@ import org.json.JSONObject;
 import org.json.JSONArray;
 
 public class MainActivity extends AppCompatActivity {
-
-    private ArrayList<Washer> washersList;
-    private RecyclerView recyclerView;
-
-    private TextView mTextViewResult;
-    private TextView model;
-
+    Fragment selectorFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        recyclerView = findViewById(R.id.recyclerView);
-        washersList = new ArrayList<>();
 
-        setWasherInfo();
-        setAdapter();
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-        mTextViewResult = findViewById(R.id.text_view_result);
-
-
+        selectorFragment = new LaundriesFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container , selectorFragment).commit();
 
     }
-
-    private void setAdapter() {
-        WashersAdapter adapter = new WashersAdapter(washersList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager((getApplicationContext()));
-        recyclerView.setLayoutManager((layoutManager));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter((adapter));
-    }
-
-    private void setWasherInfo() {
-        String url = "https://apz-project.herokuapp.com/washers";
-        OkHttpClient client = new OkHttpClient();
-
-
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
-
-        client.newCall(request).enqueue(new Callback() {
-
-            @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                if (response.isSuccessful()) {
-                    final String myResponse = response.body().string();
-
-                    MainActivity.this.runOnUiThread(new Runnable() {
-                        @Override
-
-                        public void run() {
-                            mTextViewResult.setText(myResponse);
-                            JSONObject jsonObject = null;
-                            try {
-                                jsonObject = new JSONObject(myResponse);
-                                JSONArray posts = jsonObject.getJSONArray("data");
-                                int length = posts.length();
-                                for (int i = 0; i < length; i++) {
-                                    JSONObject post = posts.getJSONObject(i);
-                                    washersList.add(new Washer(post.getString("model")));
-                                }
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-
-                        }
-                    });
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    Fragment selectedFragment = null;
+                    switch (item.getItemId()) {
+                        case R.id.laundriesFragment:
+                            selectedFragment = new LaundriesFragment();
+                            break;
+                        case R.id.nav_profile:
+                            selectedFragment = new ProfileFragment();
+                            break;
+                        case R.id.washingsFragment:
+                            selectedFragment = new WashingsFragment();
+                            break;
+                    }
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                            selectedFragment).commit();
+                    return true;
                 }
-            }
-        });
-
-
-    }
+            };
 
 }

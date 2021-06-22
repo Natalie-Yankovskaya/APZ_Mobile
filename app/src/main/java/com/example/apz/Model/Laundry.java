@@ -1,12 +1,12 @@
 package com.example.apz.Model;
 
-public class Laundries {
+public class Laundry {
 
     private String name;
     private String address;
     private String city;
 
-    public Laundries(String name, String address, String city) {
+    public Laundry(String name, String address, String city) {
         this.name = name;
         this.address = address;
         this.city = city;

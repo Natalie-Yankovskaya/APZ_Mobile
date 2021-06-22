@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/nav_laundries"
+        android:id="@+id/laundriesFragment"
         android:icon="@drawable/laundries"
         android:title="" />
 
@@ -17,7 +17,7 @@
         android:title="" />
 
     <item
-        android:id="@+id/nav_washings"
+        android:id="@+id/washingsFragment"
         android:icon="@drawable/washings"
         android:title="" />
 

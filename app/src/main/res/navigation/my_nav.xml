@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/washingsFragment">
+
+    <fragment
+        android:id="@+id/washingsFragment"
+        android:name="com.example.apz.Fragments.WashingsFragment"
+        android:label="fragment_washings"
+        tools:layout="@layout/fragment_washings" />
+    <fragment
+        android:id="@+id/laundriesFragment"
+        android:name="com.example.apz.Fragments.LaundriesFragment"
+        android:label="fragment_laundries"
+        tools:layout="@layout/fragment_laundries" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.apz.Fragments.ProfileFragment"
+        android:label="ProfileFragment" />
+</navigation>
