@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_laundries"
+        android:icon="@drawable/laundries"
+        android:title="" />
+
+    <item
+        android:id="@+id/nav_qr"
+        android:icon="@drawable/qr"
+        android:title="" />
+
+    <item
+        android:id="@+id/nav_add"
+        android:icon="@drawable/add"
+        android:title="" />
+
+    <item
+        android:id="@+id/nav_washings"
+        android:icon="@drawable/washings"
+        android:title="" />
+
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/profile"
+        android:title="" />
+
+</menu>
