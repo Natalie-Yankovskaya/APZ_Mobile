@@ -16,7 +16,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/button"
+        android:background="@drawable/button_list"
         android:layout_marginTop="15dp"
         android:hint="@string/email"
         android:padding="10dp"
@@ -25,7 +25,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/button"
+        android:background="@drawable/button_list"
         android:layout_marginTop="15dp"
         android:hint="Password"
         android:padding="10dp"
@@ -34,7 +34,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/button"
+        android:background="@drawable/button_list"
         android:layout_marginTop="15sp"
         android:text="@string/login"
         android:padding="10dp"

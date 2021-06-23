@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.apz.R;
-import com.example.apz.Washer;
+import com.example.apz.Model.Washer;
 
 import org.jetbrains.annotations.NotNull;
 

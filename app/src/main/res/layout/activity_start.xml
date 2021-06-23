@@ -27,7 +27,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/button"
+            android:background="@drawable/button_list"
             android:text="@string/login"
             android:textAllCaps="false"
             android:id="@+id/login"/>
@@ -39,7 +39,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/button"
+            android:background="@drawable/button_list"
             android:text="@string/register"
             android:textAllCaps="false"
             android:id="@+id/register"/>

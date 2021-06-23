@@ -1,4 +1,4 @@
-package com.example.apz;
+package com.example.apz.Model;
 
 public class Washer {
 

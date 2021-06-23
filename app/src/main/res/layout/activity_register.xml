@@ -16,25 +16,25 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/button"
+        android:background="@drawable/button_list"
         android:layout_marginTop="15dp"
         android:hint="Username"
-        android:padding="10dp"
-        android:id="@+id/username"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button"
-        android:layout_marginTop="15dp"
-        android:hint="Name"
         android:padding="10dp"
         android:id="@+id/name"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/button"
+        android:background="@drawable/button_list"
+        android:layout_marginTop="15dp"
+        android:hint="Name"
+        android:padding="10dp"
+        android:id="@+id/surname"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_list"
         android:layout_marginTop="15dp"
         android:hint="Email"
         android:padding="10dp"
@@ -43,7 +43,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/button"
+        android:background="@drawable/button_list"
         android:layout_marginTop="15dp"
         android:hint="Password"
         android:padding="10dp"
@@ -52,7 +52,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/button"
+        android:background="@drawable/button_list"
         android:layout_marginTop="15sp"
         android:text="REGISTER"
         android:padding="10dp"

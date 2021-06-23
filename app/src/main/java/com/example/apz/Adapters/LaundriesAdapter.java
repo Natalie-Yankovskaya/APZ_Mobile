@@ -1,10 +1,12 @@
 package com.example.apz.Adapters;
 
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,12 +20,15 @@ import java.util.ArrayList;
 
 public class LaundriesAdapter extends RecyclerView.Adapter<LaundriesAdapter.MyViewHolder>{
     private ArrayList<Laundry> laundriesList;
+    private RecyclerViewClickListener listener;
 
-    public LaundriesAdapter(ArrayList<Laundry> laundriesList) {
+
+    public LaundriesAdapter(ArrayList<Laundry> laundriesList, RecyclerViewClickListener listener) {
         this.laundriesList = laundriesList;
+        this.listener = listener;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView name;
         private TextView address;
         private TextView city;
@@ -33,6 +38,14 @@ public class LaundriesAdapter extends RecyclerView.Adapter<LaundriesAdapter.MyVi
             name = view.findViewById(R.id.textView4);
             address = view.findViewById(R.id.textView5);
             city = view.findViewById(R.id.textView6);
+
+            view.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            listener.onClick(v, getAdapterPosition());
         }
     }
 
@@ -60,4 +73,11 @@ public class LaundriesAdapter extends RecyclerView.Adapter<LaundriesAdapter.MyVi
     public int getItemCount() {
         return laundriesList.size();
     }
+
+    public interface RecyclerViewClickListener {
+        void onClick(View v, int position);
+
+    }
+
+
 }

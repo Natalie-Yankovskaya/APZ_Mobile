@@ -1,24 +1,19 @@
 package com.example.apz.Fragments;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
-import com.example.apz.Adapters.LaundriesAdapter;
-import com.example.apz.Model.Laundry;
+import com.example.apz.Adapters.WashersAdapter;
+import com.example.apz.Model.Washer;
 import com.example.apz.R;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,15 +24,17 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class LaundriesFragment extends Fragment {
 
-    private ArrayList<Laundry> laundriesList;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONArray;
+
+public class WashersFragment extends Fragment {
+
+    private ArrayList<Washer> washersList;
     private RecyclerView recyclerView;
-    private LaundriesAdapter.RecyclerViewClickListener listener;
+
     private TextView textView3;
-
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,8 +42,10 @@ public class LaundriesFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_laundries, container, false);
         recyclerView = view.findViewById(R.id.recyclerView);
-        laundriesList = new ArrayList<>();
+        washersList = new ArrayList<>();
         textView3 = view.findViewById(R.id.titleProfile);
+
+
         Fragment washers;
 
 
@@ -56,42 +55,21 @@ public class LaundriesFragment extends Fragment {
     }
 
     private void setAdapter() {
-        setOnClickListener();
-        LaundriesAdapter adapter = new LaundriesAdapter(laundriesList, listener);
+        WashersAdapter adapter = new WashersAdapter(washersList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager((getContext()));
         recyclerView.setLayoutManager((layoutManager));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter((adapter));
     }
 
-    private void setOnClickListener() {
-        listener = new LaundriesAdapter.RecyclerViewClickListener() {
-            @Override
-            public void onClick(View v, int position) {
-//                Intent intent = new Intent(getActivity(), ProfileFragment.class);
-//                startActivity(intent);
-               // String id = textView3.getText().toString();
-
-                String id = "1";
-
-                Fragment washers= new WashersFragment();
-
-                Bundle bundle = new Bundle();
-                bundle.putString("id", id);
-                washers.setArguments(bundle);
-
-
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, washers, "lalal")
-                        .addToBackStack(null)
-                        .commit();
-
-            }
-        };
-    }
-
     private void setWasherInfo() {
-        String url = "https://apz-project.herokuapp.com/laundries";
+
+
+        Bundle bundle = this.getArguments();
+        String i = bundle.getString("id");
+        //textView3.setText(i);
+
+        String url = "https://apz-project.herokuapp.com/washers?laundry_id=" + i;
         OkHttpClient client = new OkHttpClient();
 
 
@@ -111,27 +89,19 @@ public class LaundriesFragment extends Fragment {
                 if (response.isSuccessful()) {
                     final String myResponse = response.body().string();
 
-                    LaundriesFragment.this.getActivity().runOnUiThread(new Runnable() {
+                    WashersFragment.this.getActivity().runOnUiThread(new Runnable() {
                         @Override
 
                         public void run() {
-
+                            textView3.setText("Washers");
                             JSONObject jsonObject = null;
                             try {
-                                textView3.setText("Laundries");
                                 jsonObject = new JSONObject(myResponse);
                                 JSONArray posts = jsonObject.getJSONArray("data");
                                 int length = posts.length();
                                 for (int i = 0; i < length; i++) {
                                     JSONObject post = posts.getJSONObject(i);
-                                    String id = post.getString("id");
-                                    String name = post.getString("name");
-                                    String address = post.getString("address");
-                                    String city = post.getString("city");
-
-                                    Laundry laundry = new Laundry(name, address, city);
-
-                                    laundriesList.add(laundry);
+                                    washersList.add(new Washer(post.getString("model")));
                                 }
 
                             } catch (JSONException e) {

@@ -1,6 +1,6 @@
 package com.example.apz.Adapters;
 
-import com.example.apz.Washer;
+import com.example.apz.Model.Washer;
 
 import java.util.ArrayList;
 
