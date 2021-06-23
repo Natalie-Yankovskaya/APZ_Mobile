@@ -1,12 +1,10 @@
 package com.example.apz.Adapters;
 
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,9 +33,9 @@ public class LaundriesAdapter extends RecyclerView.Adapter<LaundriesAdapter.MyVi
 
         public MyViewHolder(final View view) {
             super(view);
-            name = view.findViewById(R.id.textView4);
-            address = view.findViewById(R.id.textView5);
-            city = view.findViewById(R.id.textView6);
+            name = view.findViewById(R.id.status);
+            address = view.findViewById(R.id.mode);
+            city = view.findViewById(R.id.powder);
 
             view.setOnClickListener(this);
 

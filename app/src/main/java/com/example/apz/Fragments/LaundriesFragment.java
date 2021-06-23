@@ -1,20 +1,29 @@
 package com.example.apz.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.apz.Adapters.LaundriesAdapter;
+import com.example.apz.CaptureAct;
 import com.example.apz.Model.Laundry;
 import com.example.apz.R;
+import com.example.apz.StartActivity;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,7 +43,8 @@ public class LaundriesFragment extends Fragment {
     private ArrayList<Laundry> laundriesList;
     private RecyclerView recyclerView;
     private LaundriesAdapter.RecyclerViewClickListener listener;
-    private TextView textView3;
+    private TextView titleProfile;
+
 
 
 
@@ -46,14 +56,16 @@ public class LaundriesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_laundries, container, false);
         recyclerView = view.findViewById(R.id.recyclerView);
         laundriesList = new ArrayList<>();
-        textView3 = view.findViewById(R.id.titleProfile);
+        titleProfile = view.findViewById(R.id.titleProfile);
         Fragment washers;
-
 
         setWasherInfo();
         setAdapter();
         return view;
     }
+
+
+
 
     private void setAdapter() {
         setOnClickListener();
@@ -118,7 +130,7 @@ public class LaundriesFragment extends Fragment {
 
                             JSONObject jsonObject = null;
                             try {
-                                textView3.setText("Laundries");
+                                titleProfile.setText("Laundries");
                                 jsonObject = new JSONObject(myResponse);
                                 JSONArray posts = jsonObject.getJSONArray("data");
                                 int length = posts.length();
@@ -146,6 +158,7 @@ public class LaundriesFragment extends Fragment {
 
 
     }
+
 
 
 }
