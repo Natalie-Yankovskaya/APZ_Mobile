@@ -10,13 +10,9 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.apz.MainActivity;
-import com.example.apz.Model.Washer;
 import com.example.apz.R;
-import com.example.apz.RegisterActivity;
 import com.example.apz.StartActivity;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -41,10 +37,10 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        titleProfile = view.findViewById(R.id.titleProfile);
-        name = view.findViewById(R.id.name);
-        surname = view.findViewById(R.id.surname);
-        email = view.findViewById(R.id.email);
+        titleProfile = view.findViewById(R.id.titleCreated);
+        name = view.findViewById(R.id.laundry);
+        surname = view.findViewById(R.id.washer);
+        email = view.findViewById(R.id.mode);
         logOut = view.findViewById(R.id.logout);
 
         setProfileInfo();

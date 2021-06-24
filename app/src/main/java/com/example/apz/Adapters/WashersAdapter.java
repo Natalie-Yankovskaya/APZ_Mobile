@@ -23,25 +23,39 @@ public class WashersAdapter extends RecyclerView.Adapter<WashersAdapter.MyViewHo
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        private TextView modelTxt;
+        private TextView id;
+        private TextView model;
+        private TextView program;
+        private TextView size;
 
         public MyViewHolder(final View view) {
             super(view);
-            modelTxt = view.findViewById(R.id.textView);
+            id = view.findViewById(R.id.id);
+            model = view.findViewById(R.id.model);
+            program = view.findViewById(R.id.programs);
+            size = view.findViewById(R.id.size);
+
         }
     }
     @NonNull
     @NotNull
     @Override
     public WashersAdapter.MyViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_items, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.washers_list, parent, false);
         return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull WashersAdapter.MyViewHolder holder, int position) {
+        String id = washerList.get(position).getId();
         String model = washerList.get(position).getModel();
-        holder.modelTxt.setText(model);
+        String program  = washerList.get(position).getProgram();
+        String size = washerList.get(position).getSize();
+
+        holder.id.setText(id);
+        holder.model.setText(model);
+        holder.program.setText(program);
+        holder.size.setText(size);
     }
 
     @Override

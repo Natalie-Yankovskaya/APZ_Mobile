@@ -43,7 +43,7 @@ public class WashersFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_laundries, container, false);
         recyclerView = view.findViewById(R.id.recyclerView);
         washersList = new ArrayList<>();
-        textView3 = view.findViewById(R.id.titleProfile);
+        textView3 = view.findViewById(R.id.titleCreated);
 
 
         Fragment washers;
@@ -101,7 +101,12 @@ public class WashersFragment extends Fragment {
                                 int length = posts.length();
                                 for (int i = 0; i < length; i++) {
                                     JSONObject post = posts.getJSONObject(i);
-                                    washersList.add(new Washer(post.getString("model")));
+                                    String id = post.getString("id");
+                                    String model = post.getString("model");
+                                    String program = "3";
+                                    String size = "Велика";
+
+                                    washersList.add(new Washer(id, model, program, size));
                                 }
 
                             } catch (JSONException e) {

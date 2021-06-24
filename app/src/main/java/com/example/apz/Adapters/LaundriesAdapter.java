@@ -1,14 +1,17 @@
 package com.example.apz.Adapters;
 
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.apz.Fragments.WashersFragment;
 import com.example.apz.Model.Laundry;
 import com.example.apz.R;
 
@@ -27,15 +30,17 @@ public class LaundriesAdapter extends RecyclerView.Adapter<LaundriesAdapter.MyVi
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        private TextView idLaundry;
         private TextView name;
         private TextView address;
         private TextView city;
 
         public MyViewHolder(final View view) {
             super(view);
-            name = view.findViewById(R.id.status);
-            address = view.findViewById(R.id.mode);
-            city = view.findViewById(R.id.powder);
+            idLaundry = view.findViewById(R.id.idLaundry);
+            name = view.findViewById(R.id.id);
+            address = view.findViewById(R.id.model);
+            city = view.findViewById(R.id.programs);
 
             view.setOnClickListener(this);
 
@@ -43,7 +48,9 @@ public class LaundriesAdapter extends RecyclerView.Adapter<LaundriesAdapter.MyVi
 
         @Override
         public void onClick(View v) {
+            String id = idLaundry.getText().toString();
             listener.onClick(v, getAdapterPosition());
+
         }
     }
 
@@ -57,10 +64,12 @@ public class LaundriesAdapter extends RecyclerView.Adapter<LaundriesAdapter.MyVi
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull LaundriesAdapter.MyViewHolder holder, int position) {
+        String id = laundriesList.get(position).getIdLaundry();
         String name = laundriesList.get(position).getName();
         String address = laundriesList.get(position).getAddress();
         String city = laundriesList.get(position).getCity();
 
+        holder.idLaundry.setText(id);
         holder.name.setText(name);
         holder.address.setText(address);
         holder.city.setText(city);

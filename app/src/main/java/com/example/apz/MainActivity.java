@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.apz.Adapters.WashersAdapter;
+import com.example.apz.Fragments.AddFragment;
 import com.example.apz.Fragments.ProfileFragment;
 import com.example.apz.Fragments.WashingsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -71,8 +72,9 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case R.id.nav_qr:
                             qrScanner();
-
                             selectedFragment = new ProfileFragment();
+                        case R.id.nav_add:
+                            selectedFragment = new AddFragment();
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,

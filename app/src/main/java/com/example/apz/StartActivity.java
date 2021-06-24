@@ -3,8 +3,6 @@ package com.example.apz;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -25,7 +23,7 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
 
         linearLayout = findViewById(R.id.linear_layout);
-        register = findViewById(R.id.register);
+        register = findViewById(R.id.create);
         login = findViewById(R.id.login);
 
 

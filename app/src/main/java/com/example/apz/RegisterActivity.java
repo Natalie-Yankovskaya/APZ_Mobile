@@ -29,11 +29,11 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        username = findViewById(R.id.name);
-        name = findViewById(R.id.surname);
-        email = findViewById(R.id.email);
-        password = findViewById(R.id.password);
-        register = findViewById(R.id.register);
+        username = findViewById(R.id.laundry);
+        name = findViewById(R.id.washer);
+        email = findViewById(R.id.mode);
+        password = findViewById(R.id.conditioner);
+        register = findViewById(R.id.create);
         loginUser = findViewById(R.id.login_user);
 
         pd = new ProgressDialog(this);
@@ -65,6 +65,8 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
 
 

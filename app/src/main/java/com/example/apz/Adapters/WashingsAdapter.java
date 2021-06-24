@@ -8,7 +8,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.apz.Model.Washer;
 import com.example.apz.Model.Washing;
 import com.example.apz.R;
 
@@ -32,10 +31,10 @@ public class WashingsAdapter extends RecyclerView.Adapter<WashingsAdapter.MyView
 
         public MyViewHolder(final View view) {
             super(view);
-            status = view.findViewById(R.id.status);
-            mode = view.findViewById(R.id.mode);
-            price = view.findViewById(R.id.powder);
-            conditioner = view.findViewById(R.id.conditioner);
+            status = view.findViewById(R.id.id);
+            mode = view.findViewById(R.id.model);
+            price = view.findViewById(R.id.programs);
+            conditioner = view.findViewById(R.id.size);
 
         }
     }

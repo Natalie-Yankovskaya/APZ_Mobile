@@ -92,7 +92,7 @@ public class WashingsFragment extends Fragment {
 
                             JSONObject jsonObject = null;
                             try {
-                                titleHistory.setText("Washings");
+                                titleHistory.setText(myResponse);
                                 jsonObject = new JSONObject(myResponse);
                                 JSONArray posts = jsonObject.getJSONArray("data");
                                 int length = posts.length();

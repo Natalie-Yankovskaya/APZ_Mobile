@@ -8,17 +8,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:src="@drawable/washings"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/button_list"
         android:layout_marginTop="15dp"
-        android:hint="@string/email"
+        android:hint="@string/washerId"
+        android:padding="10dp"
+        android:id="@+id/washer"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_list"
+        android:layout_marginTop="15dp"
+        android:hint="@string/modeId"
         android:padding="10dp"
         android:id="@+id/mode"/>
 
@@ -27,25 +32,26 @@
         android:layout_height="wrap_content"
         android:background="@drawable/button_list"
         android:layout_marginTop="15dp"
-        android:hint="@string/password"
+        android:hint="@string/powder"
+        android:padding="10dp"
+        android:id="@+id/powder"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_list"
+        android:layout_marginTop="15dp"
+        android:hint="@string/conditioner"
         android:padding="10dp"
         android:id="@+id/conditioner"/>
 
     <Button
+        android:id="@+id/create"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_list"
         android:layout_marginTop="15sp"
-        android:text="@string/login"
+        android:background="@drawable/button_list"
         android:padding="10dp"
-        android:id="@+id/login"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/register"
-        android:layout_marginTop="15dp"
-        android:id="@+id/register_user"/>
+        android:text="@string/create" />
 
 </LinearLayout>
